@@ -2,6 +2,13 @@ import "./globals.css";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#2563eb",
+};
+
 export const metadata = {
   title: "Toán 8 Nền Tảng — Lộ trình củng cố 14 ngày",
   description: "Website học Toán 8 từ gốc theo lộ trình 14 ngày, trực quan, dễ hiểu, theo dõi tiến độ và chữa lỗi sai.",

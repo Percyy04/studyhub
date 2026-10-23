@@ -197,23 +197,25 @@ export default function LessonPage() {
       </div>
 
       {/* Tabs điều hướng 8 bước trong bài */}
-      <div className="flex items-center gap-1 overflow-x-auto pb-2 scrollbar-none no-print border-b border-slate-200">
-        {TABS.map((tab) => {
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`touch-target px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
-                isActive
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80"
-              }`}
-            >
-              <span>{tab.label}</span>
-            </button>
-          );
-        })}
+      <div className="relative border-b border-slate-200 no-print">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none px-0.5">
+          {TABS.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`touch-target px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
+                  isActive
+                    ? "bg-blue-600 text-white shadow-sm font-bold"
+                    : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80"
+                }`}
+              >
+                <span>{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Nội dung từng Tab */}

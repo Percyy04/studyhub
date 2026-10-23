@@ -54,6 +54,16 @@ h1, h2, h3, h4, .font-heading {
   min-width: 44px;
 }
 
+/* Ẩn scrollbar thô nhưng giữ khả năng vuốt mượt mà trên mobile */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Hỗ trợ prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

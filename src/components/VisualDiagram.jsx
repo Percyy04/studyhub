@@ -9,9 +9,9 @@ export function VisualDiagram({ type = "number-line" }) {
     // Trục số từ -10 đến 5
     return (
       <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 my-4">
-        <div className="text-sm font-semibold text-blue-900 mb-2 flex items-center justify-between">
+        <div className="text-sm font-semibold text-blue-900 mb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
           <span>Minh họa trực quan: Trừ số âm là tiến sang phải trên trục số</span>
-          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-mono">−7 − (−{sliderVal}) = −7 + {sliderVal} = { -7 + sliderVal }</span>
+          <span className="text-xs bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded font-mono self-start sm:self-auto">−7 − (−{sliderVal}) = −7 + {sliderVal} = { -7 + sliderVal }</span>
         </div>
         <div className="overflow-x-auto py-2">
           <svg viewBox="0 0 600 120" className="w-full max-w-[600px] mx-auto text-slate-700">
@@ -56,17 +56,19 @@ export function VisualDiagram({ type = "number-line" }) {
             </text>
           </svg>
         </div>
-        <div className="flex items-center gap-3 mt-2 text-xs text-slate-600">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-2 text-xs text-slate-600">
           <span>Kéo thử để quan sát bước nhảy:</span>
-          <input
-            type="range"
-            min="1"
-            max="10"
-            value={sliderVal}
-            onChange={(e) => setSliderVal(parseInt(e.target.value, 10))}
-            className="w-36 accent-blue-600 cursor-pointer"
-          />
-          <span className="font-semibold text-slate-800">+{sliderVal} bước</span>
+          <div className="flex items-center gap-2">
+            <input
+              type="range"
+              min="1"
+              max="10"
+              value={sliderVal}
+              onChange={(e) => setSliderVal(parseInt(e.target.value, 10))}
+              className="w-32 sm:w-36 accent-blue-600 cursor-pointer"
+            />
+            <span className="font-semibold text-slate-800 whitespace-nowrap">+{sliderVal} bước</span>
+          </div>
         </div>
       </div>
     );

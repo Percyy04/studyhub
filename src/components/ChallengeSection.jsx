@@ -212,7 +212,7 @@ export function ChallengeSection({ challenge, dayNumber = 1 }) {
               value={userReflection}
               onChange={(e) => setUserReflection(e.target.value)}
               placeholder="Em hãy giải thích: Bạn An đã sai ở bước nào? Vì sao việc lấy 8 + 5 rồi đặt dấu trừ là chưa đúng quy tắc? Phép tính đúng phải sửa lại thế nào?..."
-              className="w-full text-sm p-3.5 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-800 transition-all placeholder:text-slate-400"
+              className="w-full text-base sm:text-sm p-3.5 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-800 transition-all placeholder:text-slate-400"
             />
             <div className="mt-2 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 gap-1.5">
               <span>
@@ -591,19 +591,19 @@ export function ChallengeSection({ challenge, dayNumber = 1 }) {
 
               <form
                 onSubmit={handleCheckFollowUp}
-                className="flex flex-wrap items-center gap-2 mb-3"
+                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mb-3"
               >
                 <input
                   type="text"
                   value={followUpInput}
                   onChange={(e) => setFollowUpInput(e.target.value)}
                   placeholder="Nhập kết quả số..."
-                  className="w-36 text-xs p-2.5 rounded-xl border border-purple-300 bg-white font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full sm:w-40 text-base sm:text-xs p-2.5 rounded-xl border border-purple-300 bg-white font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
                 <button
                   type="submit"
                   disabled={!followUpInput.trim()}
-                  className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold shadow-xs cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="touch-target px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold shadow-xs cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Kiểm tra đáp án
                 </button>

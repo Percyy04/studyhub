@@ -168,8 +168,8 @@ export default function ErrorNotebookPage() {
                   err.resolved ? "border-emerald-200 bg-emerald-50/15" : "border-rose-200"
                 }`}
               >
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
+                  <div className="flex flex-wrap items-center gap-2">
                     <span className="font-mono font-bold text-xs bg-rose-100 text-rose-800 px-2 py-0.5 rounded">
                       {err.errorCode}
                     </span>

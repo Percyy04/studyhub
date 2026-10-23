@@ -436,8 +436,8 @@ export default function TutorWorkspacePage() {
           </div>
 
           {/* Nút lưu & Điều hướng ngày */}
-          <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 no-print">
-            <div className="flex items-center gap-2">
+          <div className="mt-5 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 no-print">
+            <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={handleSaveDay}
@@ -455,12 +455,12 @@ export default function TutorWorkspacePage() {
               </button>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between sm:justify-end gap-2">
               <button
                 type="button"
                 disabled={currentDay === 1}
                 onClick={() => handleSelectDay(currentDay - 1)}
-                className="touch-target px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1"
+                className="touch-target px-3.5 py-2 border border-slate-200 rounded-xl text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span>Ngày trước</span>
@@ -469,7 +469,7 @@ export default function TutorWorkspacePage() {
                 type="button"
                 disabled={currentDay === 14}
                 onClick={() => handleSelectDay(currentDay + 1)}
-                className="touch-target px-3 py-2 border border-slate-200 rounded-xl text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1"
+                className="touch-target px-3.5 py-2 border border-slate-200 rounded-xl text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1"
               >
                 <span>Ngày tiếp</span>
                 <ChevronRight className="w-4 h-4" />
