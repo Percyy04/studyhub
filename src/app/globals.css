@@ -1,0 +1,85 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #f8fafc;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Hiển thị phân số toán học thanh lịch bằng CSS Flexbox */
+.math-fraction {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 3px;
+  line-height: 1.1;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.95em;
+}
+.math-num {
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
+}
+.math-den {
+  padding-top: 1px;
+}
+
+/* Container công thức toán chống tràn trên mobile */
+.math-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+  padding: 4px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Đảm bảo vùng chạm tối thiểu 44px trên mobile */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Hỗ trợ prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Chế độ in ấn chuyên biệt cho báo cáo gia sư */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+  }
+  .print-page {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #cccccc !important;
+  }
+  header, footer, nav {
+    display: none !important;
+  }
+}

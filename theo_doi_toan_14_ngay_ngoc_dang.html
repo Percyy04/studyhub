@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theo dõi lộ trình Toán 14 ngày — Ngọc Đặng</title>
+<style>
+:root{--bg:#f4f6fb;--panel:#fff;--ink:#182230;--muted:#667085;--line:#e4e7ec;--blue:#2457c5;--blue-soft:#eaf0ff;--green:#157347;--amber:#946200;--red:#b42318;--shadow:0 8px 28px rgba(16,24,40,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,#173b82,#2867d8);color:#fff;padding:28px 20px}header .wrap,main{max-width:1200px;margin:auto}h1{font-size:clamp(24px,4vw,34px);margin:0 0 8px}header p{margin:0;color:#e5edff;max-width:760px}
+main{padding:20px;display:grid;gap:18px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}h2{font-size:19px;margin:0 0 12px}h3{font-size:16px;margin:0 0 8px}.muted{color:var(--muted)}.small{font-size:13px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{border:1px solid var(--line);border-radius:12px;padding:14px}.stat b{display:block;font-size:25px;margin-top:4px}.progress{height:9px;background:#e9edf5;border-radius:99px;overflow:hidden;margin-top:10px}.progress span{height:100%;display:block;background:var(--blue);width:0;transition:width .2s}
+.layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;align-items:start}.day-list{display:grid;gap:7px}.day-btn{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;cursor:pointer;color:var(--ink)}.day-btn.active{border-color:var(--blue);background:var(--blue-soft)}.day-btn.done:after{content:" ✓";color:var(--green);font-weight:700}.day-btn strong{display:block}.day-btn span{display:block;color:var(--muted);font-size:12px}
+label{display:block;font-weight:650;font-size:13px;margin:0 0 5px}input,select,textarea{width:100%;font:inherit;color:var(--ink);border:1px solid #cfd5df;border-radius:9px;padding:10px 11px;background:#fff}textarea{min-height:88px;resize:vertical}input:focus,select:focus,textarea:focus{outline:3px solid #dbe7ff;border-color:var(--blue)}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{min-width:0}.field.full{grid-column:1/-1}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:9px;padding:9px 13px;background:#fff;color:var(--ink);font-weight:650;cursor:pointer}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.danger{color:var(--red)}.btn:disabled{opacity:.45;cursor:not-allowed}.tag{display:inline-block;border-radius:99px;padding:3px 9px;background:#f2f4f7;color:#344054;font-size:12px;font-weight:650}.tag.good{background:#dcfae6;color:#05603a}.tag.warn{background:#fef0c7;color:#7a4d00}.tag.bad{background:#fee4e2;color:#912018}.checkrow{display:flex;gap:10px;align-items:flex-start}.checkrow input{width:auto;margin-top:5px}.hint{padding:11px 12px;border-radius:10px;background:#f8faff;border:1px solid #dce6ff}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:680px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}.error-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.error-item{border:1px solid var(--line);border-radius:10px;padding:10px}.error-item p{margin:5px 0;color:var(--muted);font-size:13px}.error-item label{display:flex;gap:8px;align-items:flex-start;font-weight:600}.error-item input{width:auto;margin-top:4px}.hidden{display:none!important}footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 24px}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.day-list{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){main{padding:12px}.panel{padding:14px}.fields,.error-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.day-list{grid-template-columns:1fr 1fr}header{padding:23px 14px}}
+@media print{body{background:#fff}.no-print,header .muted{display:none!important}.panel{box-shadow:none;break-inside:avoid}main{max-width:none;padding:0}.layout{grid-template-columns:1fr}.day-list{display:none}input,select,textarea{border:0;padding:2px}header{background:#fff;color:#000;padding:12px 0}header p{color:#333}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>Lộ trình củng cố Toán 14 ngày</h1><p>Theo dõi tiến độ học của Ngọc Đặng (Pearl) · Lớp 8 · 60 phút mỗi buổi</p></div></header>
+<main>
+<section class="panel">
+  <div class="row" style="justify-content:space-between"><div><h2>Tổng quan tiến độ</h2><div class="muted small">Dữ liệu tự lưu trên trình duyệt của thiết bị này (localStorage), không cần tài khoản.</div></div><div class="row no-print"><button class="btn" id="exportBtn">Xuất JSON</button><button class="btn" id="csvBtn">Xuất CSV</button><button class="btn" onclick="window.print()">In / Lưu PDF</button><button class="btn" id="importBtn">Nhập bản sao lưu</button><input id="importFile" type="file" accept=".json,application/json" class="hidden"></div></div>
+  <div class="stats" style="margin-top:14px">
+    <div class="stat"><span class="muted small">Buổi đã ghi nhận</span><b id="doneCount">0/14</b></div>
+    <div class="stat"><span class="muted small">Tổng câu đúng / tổng câu</span><b id="totalScore">—</b></div>
+    <div class="stat"><span class="muted small">Tỉ lệ đúng</span><b id="accuracy">—</b></div>
+    <div class="stat"><span class="muted small">Kỹ năng thành thạo</span><b id="masteredCount">0</b></div>
+  </div><div class="progress"><span id="progressBar"></span></div>
+  <p class="small muted" style="margin-bottom:0">Mốc ban đầu: 7/20 câu đúng (35%). Mục tiêu tham khảo: đạt ít nhất 8/10, tự trình bày được và nhớ lại sau 2–3 ngày.</p>
+</section>
+
+<section class="layout">
+  <aside class="panel"><h2>14 buổi học</h2><div id="dayList" class="day-list"></div>
+    <div class="hint small" style="margin-top:14px"><b>Khung 60 phút</b><br>10’ ôn bài cũ · 15’ học ý chính · 20’ luyện có hướng dẫn · 10’ tự kiểm tra · 5’ ghi lỗi và kế hoạch sau.</div>
+  </aside>
+  <section class="panel" id="editor">
+    <div class="row" style="justify-content:space-between;align-items:flex-start"><div><h2 id="dayTitle">Ngày 1</h2><div id="dayGoal" class="muted"></div></div><span id="statusTag" class="tag">Chưa học</span></div>
+    <div class="hint" style="margin:14px 0"><b>Mục tiêu buổi học</b><div id="goalText"></div><div class="small muted" id="testText" style="margin-top:5px"></div></div>
+    <div class="fields">
+      <div class="field"><label for="date">Ngày học thực tế</label><input type="date" id="date"></div>
+      <div class="field"><label for="score">Số câu đúng / tổng câu</label><input id="score" placeholder="Ví dụ: 8/10" inputmode="numeric"></div>
+      <div class="field"><label for="independence">Mức độ tự làm</label><select id="independence"><option value="">Chưa đánh giá</option><option>Tự làm độc lập</option><option>Cần gợi ý</option><option>Cần hướng dẫn từng bước</option></select></div>
+      <div class="field"><label for="mastery">Mức độ thành thạo</label><select id="mastery"><option value="">Chưa đánh giá</option><option>Chưa vững</option><option>Đang hình thành</option><option>Khá vững</option><option>Thành thạo</option></select></div>
+      <div class="field full"><label for="errors">Lỗi sai / biểu hiện quan sát được</label><textarea id="errors" placeholder="Ví dụ: quên đổi phép trừ số âm thành phép cộng; sai dấu khi tính..."></textarea></div>
+      <div class="field full"><label>Danh mục lỗi sai (chọn tất cả lỗi gặp trong buổi)</label><div class="error-grid" id="errorChecklist"></div></div>
+      <div class="field"><label for="review">Ôn lại sau 2–3 ngày</label><input id="review" placeholder="Ví dụ: 4/5 đúng, tự làm"></div>
+      <div class="field"><label for="explain">Có giải thích được quy tắc?</label><select id="explain"><option value="">Chưa kiểm tra</option><option>Có, giải thích rõ</option><option>Một phần / cần nhắc</option><option>Chưa giải thích được</option></select></div>
+      <div class="field full"><label for="notes">Ghi chú của người dạy</label><textarea id="notes" placeholder="Điều làm tốt, điều gây khó khăn, tâm trạng/nhịp học, ví dụ cần dạy lại..."></textarea></div>
+      <div class="field full"><label for="next">Kế hoạch cải thiện buổi tiếp theo</label><textarea id="next" placeholder="Ví dụ: 5 bài trừ số âm; yêu cầu trình bày từng bước; ôn lại phân số..."></textarea></div>
+    </div>
+    <div class="row no-print" style="margin-top:15px"><button class="btn primary" id="saveBtn">Lưu buổi học</button><button class="btn" id="clearBtn">Xóa nội dung buổi này</button><button class="btn" id="prevBtn">← Ngày trước</button><button class="btn" id="nextBtn">Ngày tiếp →</button></div>
+    <div id="decision" class="hint" style="margin-top:14px"><b>Gợi ý quyết định:</b> Nhập điểm và quan sát rồi lưu để nhận khuyến nghị.</div>
+  </section>
+</section>
+
+<section class="panel"><h2>Tiêu chí chuyển bài</h2><div class="table-wrap"><table><thead><tr><th>Mức</th><th>Dấu hiệu</th><th>Hành động</th></tr></thead><tbody>
+<tr><td><span class="tag bad">Chưa vững</span></td><td>Dưới 6/10 hoặc sai quy tắc cốt lõi</td><td>Dạy lại bằng ví dụ đơn giản; luyện 5–8 câu cùng dạng.</td></tr>
+<tr><td><span class="tag warn">Đang học</span></td><td>6–7/10 hoặc còn phụ thuộc gợi ý</td><td>Tiếp tục luyện và trộn bài cũ với bài mới.</td></tr>
+<tr><td><span class="tag good">Có thể chuyển</span></td><td>Từ 8/10, tự trình bày ít nhất 3 bài và giải thích được quy tắc</td><td>Chuyển nội dung mới nhưng vẫn ôn xen kẽ.</td></tr>
+<tr><td><span class="tag good">Vững bền</span></td><td>Đạt tiêu chí trên và làm tốt bài ôn sau 2–3 ngày</td><td>Giảm bài lặp, tăng bài vận dụng.</td></tr>
+</tbody></table></div><p class="small muted">Điểm cao nhưng không giải thích được cách làm thì chưa xem là thành thạo. Nếu cùng một mã lỗi lặp lại ở từ 2 buổi, cần đưa lỗi đó vào phần ôn đầu buổi tiếp theo.</p></section>
+
+<section class="panel"><h2>Bảng tổng hợp lỗi sai</h2><div class="table-wrap"><table><thead><tr><th>Mã</th><th>Lỗi thường gặp</th><th>Ví dụ</th><th>Cách sửa / nhắc nhớ</th><th>Số buổi xuất hiện</th></tr></thead><tbody id="errorSummary"></tbody></table></div></section>
+
+<section class="panel"><h2>Tổng hợp 14 ngày</h2><div class="table-wrap"><table><thead><tr><th>Ngày</th><th>Nội dung</th><th>Điểm</th><th>Tự làm</th><th>Thành thạo</th><th>Ôn lại</th><th>Kế hoạch cải thiện</th></tr></thead><tbody id="summaryTable"></tbody></table></div></section>
+<section class="panel"><h2>Ghi chú chung / điều chỉnh lộ trình</h2><label for="globalNotes">Ghi lại nhận xét dài hạn, thay đổi lịch học hoặc nội dung cần ưu tiên</label><textarea id="globalNotes" placeholder="Ví dụ: phân số cần thêm 2 buổi; tiến bộ rõ ở quy tắc dấu..."></textarea><div class="row no-print" style="margin-top:10px"><button class="btn primary" id="saveGlobal">Lưu ghi chú chung</button><button class="btn danger" id="resetAll">Xóa toàn bộ dữ liệu trên thiết bị này</button></div></section>
+</main>
+<footer>Phiên bản local · Dữ liệu nằm trong trình duyệt hiện tại. Hãy xuất JSON định kỳ để sao lưu trước khi xóa dữ liệu trình duyệt.</footer>
+<script>
+const plan=[
+["Số nguyên: cộng, trừ","Phân biệt dấu của số và phép toán; trừ số âm","10 câu; mục tiêu ≥ 8/10"],
+["Nhân, chia số nguyên; thứ tự phép tính","Quy tắc dấu và thứ tự thực hiện phép tính","10 câu; mục tiêu ≥ 8/10"],
+["Phân số bằng nhau, rút gọn","Tìm ước chung và rút gọn đúng","10 câu; mục tiêu ≥ 8/10"],
+["Quy đồng, cộng và trừ phân số","Tìm mẫu chung; giữ đúng dấu","10 câu; mục tiêu ≥ 8/10"],
+["Nhân, chia phân số","Nhân tử với tử; đảo phân số khi chia","10 câu; mục tiêu ≥ 8/10"],
+["Ôn trộn số nguyên và phân số","Chọn đúng quy tắc, không làm theo cảm tính","12 câu; mục tiêu ≥ 10/12"],
+["Kiểm tra giữa chặng và chữa lỗi","Xác định phần đã vững và phần cần học lại","20 câu; mục tiêu ≥ 16/20"],
+["Phân phối vào ngoặc","Nhân với từng hạng tử trong ngoặc","10 câu; mục tiêu ≥ 8/10"],
+["Dấu trừ trước ngoặc","Đổi dấu đúng khi bỏ ngoặc","10 câu; mục tiêu ≥ 8/10"],
+["Thu gọn biểu thức","Gộp hạng tử đồng dạng, xử lý dấu","10 câu; mục tiêu ≥ 8/10"],
+["Phương trình có ngoặc","Bỏ ngoặc, thu gọn, tìm x và thử lại","10 câu; mục tiêu ≥ 8/10"],
+["Hình học nền","Góc kề bù, tổng góc tam giác, tam giác cân","10 câu; mục tiêu ≥ 8/10"],
+["Kết nối với Toán 8 đang học","Vận dụng kiến thức nền vào bài trên lớp","10 câu; mục tiêu ≥ 8/10"],
+["Kiểm tra cuối chặng","So sánh với đầu vào và lập kế hoạch tiếp theo","20 câu mới; mục tiêu ≥ 16/20"]
+];
+const errors=[
+["E1","Sai dấu số nguyên","−7 − (−4) = −11","Đổi trừ số âm thành cộng số đối."],
+["E2","Sai dấu nhân/chia","(−3) × (−4) = −12","Cùng dấu ra dương; khác dấu ra âm."],
+["E3","Sai thứ tự phép tính","2 + 3 × 4 = 20","Ngoặc trước; nhân/chia trước cộng/trừ."],
+["F1","Rút gọn phân số sai","6/9 = 3/6","Chia cả tử và mẫu cho cùng ước chung."],
+["F2","Cộng/trừ phân số sai","1/2 + 1/3 = 2/5","Quy đồng mẫu trước, rồi cộng/trừ tử."],
+["F3","Chia phân số sai","2/3 ÷ 4/5 = 2/3 × 4/5","Nhân với phân số nghịch đảo."],
+["A1","Phân phối thiếu hạng tử","2(x + 3) = 2x + 3","Nhân số ngoài ngoặc với từng hạng tử."],
+["A2","Bỏ ngoặc sai dấu","−(x − 4) = −x − 4","Đổi dấu tất cả hạng tử trong ngoặc."],
+["A3","Gộp hạng tử không đồng dạng","2x + 3 = 5x","Chỉ gộp hạng tử cùng loại."],
+["X1","Biến đổi phương trình sai","Chuyển vế không đổi dấu","Thực hiện cùng phép toán ở hai vế."],
+["H1","Nhầm tính chất hình học","Hai góc kề bù không cộng 180°","Vẽ hình, ghi dữ kiện và nêu quy tắc."]
+];
+const KEY="pearl_math_tracker_v1";
+let state={days:{},globalNotes:""},current=1;
+const blank=()=>({date:"",score:"",independence:"",mastery:"",errors:"",codes:[],review:"",explain:"",notes:"",next:""});
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||"{}");state={days:x.days||{},globalNotes:x.globalNotes||""}}catch(e){state={days:{},globalNotes:""}}}
+function saveStorage(){localStorage.setItem(KEY,JSON.stringify(state))}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function getDay(n){return {...blank(),...(state.days[n]||{})}}
+function parseScore(s){const m=String(s||"").match(/^\s*(\d+)\s*\/\s*(\d+)\s*$/);if(!m||+m[2]===0||+m[1]>+m[2])return null;return [+m[1],+m[2]]}
+function renderList(){document.getElementById("dayList").innerHTML=plan.map((p,i)=>{const n=i+1,d=getDay(n),done=!!(d.date||d.score||d.notes||d.errors);return `<button class="day-btn ${n===current?"active":""} ${done?"done":""}" data-day="${n}"><strong>Ngày ${n}: ${esc(p[0])}</strong><span>${esc(d.score||"Chưa nhập điểm")}${d.mastery?" · "+esc(d.mastery):""}</span></button>`}).join("");document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{current=+b.dataset.day;renderAll()})}
+function renderErrors(){document.getElementById("errorChecklist").innerHTML=errors.map(e=>`<div class="error-item"><label><input type="checkbox" value="${e[0]}" class="errcheck"><span>${e[0]} — ${e[1]}</span></label><p>${e[2]}</p></div>`).join("");document.querySelectorAll(".errcheck").forEach(c=>c.onchange=()=>{const d=getDay(current);d.codes=[...document.querySelectorAll(".errcheck:checked")].map(x=>x.value);state.days[current]=d;saveStorage();renderSummary()})}
+function fillForm(){const d=getDay(current),p=plan[current-1];document.getElementById("dayTitle").textContent=`Ngày ${current}: ${p[0]}`;document.getElementById("dayGoal").textContent=`Buổi ${current}/14 · 60 phút`;document.getElementById("goalText").textContent=p[1];document.getElementById("testText").textContent="Bài kiểm tra gợi ý: "+p[2];["date","score","independence","mastery","errors","review","explain","notes","next"].forEach(k=>document.getElementById(k).value=d[k]||"");document.querySelectorAll(".errcheck").forEach(c=>c.checked=(d.codes||[]).includes(c.value));document.getElementById("prevBtn").disabled=current===1;document.getElementById("nextBtn").disabled=current===14;updateDecision(false)}
+function saveDay(){const d=getDay(current);["date","score","independence","mastery","errors","review","explain","notes","next"].forEach(k=>d[k]=document.getElementById(k).value.trim());d.codes=[...document.querySelectorAll(".errcheck:checked")].map(x=>x.value);const sc=parseScore(d.score);if(d.score&&!sc){alert("Điểm chưa đúng định dạng. Hãy nhập dạng 8/10.");return}state.days[current]=d;saveStorage();renderAll();updateDecision(true)}
+function updateDecision(show){const d=getDay(current),sc=parseScore(d.score),el=document.getElementById("decision");let msg="Nhập điểm số rồi lưu để nhận gợi ý.";if(sc){const rate=sc[0]/sc[1];if(rate<.6)msg="Chưa vững: dạy lại bằng ví dụ đơn giản và luyện 5–8 câu cùng dạng.";else if(rate<.8)msg="Đang hình thành: tiếp tục luyện có gợi ý và trộn bài cũ.";else if(d.independence==="Tự làm độc lập"&&d.explain==="Có, giải thích rõ")msg="Có thể cân nhắc chuyển bài nếu em trình bày được ít nhất 3 bài. Vẫn cần kiểm tra nhớ lại sau 2–3 ngày.";else msg="Điểm đạt ngưỡng nhưng cần kiểm tra khả năng tự làm, trình bày và giải thích trước khi chuyển bài."}if((d.codes||[]).length>=2)msg+=" Có nhiều mã lỗi được chọn: ưu tiên chữa từng lỗi trước buổi sau.";el.innerHTML="<b>Gợi ý quyết định:</b> "+esc(msg);if(show)el.scrollIntoView({behavior:"smooth",block:"nearest"})}
+function renderSummary(){let count=0,correct=0,total=0,mastered=0;for(let i=1;i<=14;i++){const d=getDay(i),sc=parseScore(d.score);if(d.date||d.score||d.notes||d.errors)count++;if(sc){correct+=sc[0];total+=sc[1]}if(d.mastery==="Thành thạo")mastered++}document.getElementById("doneCount").textContent=count+"/14";document.getElementById("totalScore").textContent=total?`${correct}/${total}`:"—";document.getElementById("accuracy").textContent=total?Math.round(correct/total*100)+"%":"—";document.getElementById("masteredCount").textContent=mastered;document.getElementById("progressBar").style.width=(count/14*100)+"%";
+document.getElementById("summaryTable").innerHTML=plan.map((p,i)=>{const d=getDay(i+1);return `<tr><td>${i+1}</td><td>${esc(p[0])}</td><td>${esc(d.score||"—")}</td><td>${esc(d.independence||"—")}</td><td>${esc(d.mastery||"—")}</td><td>${esc(d.review||"—")}</td><td>${esc(d.next||"—")}</td></tr>`}).join("");
+document.getElementById("errorSummary").innerHTML=errors.map(e=>{const n=Object.values(state.days).filter(d=>(d.codes||[]).includes(e[0])).length;return `<tr><td><b>${e[0]}</b></td><td>${e[1]}</td><td>${e[2]}</td><td>${e[3]}</td><td><span class="tag ${n>=2?"bad":n===1?"warn":""}">${n} buổi</span></td></tr>`}).join("");renderList()}
+function renderAll(){renderList();fillForm();renderSummary()}
+document.getElementById("saveBtn").onclick=saveDay;
+document.getElementById("clearBtn").onclick=()=>{if(confirm("Xóa ghi nhận của ngày "+current+"?")){delete state.days[current];saveStorage();renderAll()}};
+document.getElementById("prevBtn").onclick=()=>{if(current>1){current--;renderAll()}};
+document.getElementById("nextBtn").onclick=()=>{if(current<14){current++;renderAll()}};
+document.getElementById("saveGlobal").onclick=()=>{state.globalNotes=document.getElementById("globalNotes").value;saveStorage();alert("Đã lưu ghi chú chung trên trình duyệt này.")};
+document.getElementById("resetAll").onclick=()=>{if(confirm("Xóa toàn bộ nhật ký và ghi chú đã lưu trên thiết bị này? Hãy xuất JSON trước nếu cần giữ dữ liệu.")){state={days:{},globalNotes:""};saveStorage();document.getElementById("globalNotes").value="";current=1;renderAll()}};
+document.getElementById("exportBtn").onclick=()=>{const blob=new Blob([JSON.stringify({app:"Pearl Math Tracker",version:1,exportedAt:new Date().toISOString(),...state},null,2)],{type:"application/json"});download(blob,"ngoc-dang-toan-14-ngay-backup.json")};
+document.getElementById("csvBtn").onclick=()=>{const rows=[["Ngày","Nội dung","Ngày học","Điểm","Tự làm","Thành thạo","Lỗi sai","Mã lỗi","Ôn lại","Giải thích quy tắc","Ghi chú","Kế hoạch cải thiện"]];plan.forEach((p,i)=>{const d=getDay(i+1);rows.push([i+1,p[0],d.date,d.score,d.independence,d.mastery,d.errors,(d.codes||[]).join(";"),d.review,d.explain,d.notes,d.next])});const csv="\ufeff"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");download(new Blob([csv],{type:"text/csv;charset=utf-8"}),"ngoc-dang-toan-14-ngay.csv")};
+function download(blob,name){const a=document.createElement("a"),url=URL.createObjectURL(blob);a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+document.getElementById("importBtn").onclick=()=>document.getElementById("importFile").click();
+document.getElementById("importFile").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!x.days||typeof x.days!=="object")throw new Error("invalid");if(!confirm("Nhập bản sao lưu và thay thế dữ liệu hiện tại?"))return;state={days:x.days,globalNotes:x.globalNotes||""};saveStorage();document.getElementById("globalNotes").value=state.globalNotes;renderAll();alert("Đã nhập bản sao lưu.")}catch(err){alert("Không đọc được tệp JSON sao lưu hợp lệ.")}finally{e.target.value=""}};
+load();document.getElementById("globalNotes").value=state.globalNotes;renderErrors();renderAll();
+</script>
+</body>
+</html>
